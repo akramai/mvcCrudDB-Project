@@ -1,0 +1,35 @@
+﻿@model List<mvcCrudDB.Context.tbl_student>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Description</th>
+        <th>Action</th> @*functionality of add and delete will be there*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Fname</td>
+            <td>@item.Email</td>
+            <td>@item.Mobile</td>
+            <td>@item.Description</td>
+            <td>
+                <a href="@Url.Action("Student",new { item.Name,item.Fname,item.Email,item.Mobile,item.ID,item.Description })"><i class="glyphicon glyphicon-pencil"></i>Edit</a>
+                <a herf="@Url.Action("Delete", new {ID=item.ID})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+    }
+
+
+
+</table>
+
